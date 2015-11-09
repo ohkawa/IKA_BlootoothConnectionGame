@@ -16,10 +16,6 @@ let MESSAGE_TYPE = "MessageType"
 
 class Message: NSObject, NSCoding {
     var messageType : MessageType = MessageType.GameStatus
-
-    override init() {
-        super.init()
-    }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeInt32(self.messageType.rawValue, forKey: MESSAGE_TYPE)
