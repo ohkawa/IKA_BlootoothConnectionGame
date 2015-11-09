@@ -61,7 +61,8 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     // --------------------------------------------------------------------- //
     // MARK: - MCNearbyServiceBrowserDelegate
     func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        self.browser.invitePeer(peerID, toSession: session, withContext: nil, timeout: 10)
+        let data = NSKeyedArchiver.archivedDataWithRootObject(GameConditionManager.sharedInstance.uuid)
+        self.browser.invitePeer(peerID, toSession: session, withContext: data, timeout: 10)
     }
     
     func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
@@ -76,6 +77,9 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
         print(context?.description)
         print(invitationHandler)
         invitationHandler(true, self.session);
+        
+        let opponentUuid = NSKeyedUnarchiver.unarchiveObjectWithData(context!) as! String
+        GameConditionManager.sharedInstance.opponentUuid = opponentUuid
     }
     
     // --------------------------------------------------------------------- //

@@ -10,17 +10,11 @@ import UIKit
 
 class CanvasVC: UIViewController {
     
-    
-    
     var moveView: UIView!
     let timer = Timer()
 
     override func viewDidLoad() {
 
-        
-
-
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         timer.start()
@@ -47,7 +41,8 @@ class CanvasVC: UIViewController {
         let point = PointModel()
         point.point = touches.first!.locationInView(self.view)
         point.scale = scale
-        print(scale)
+        point.color = GameConditionManager.sharedInstance.color
+
         
         NearbyManager.sharedInstance.sendMessage(point)
         

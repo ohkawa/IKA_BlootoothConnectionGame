@@ -8,14 +8,8 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
-
-
-enum PaintColor : Int32 {
-    case Blue
-    case Orange
-    case Green
-}
 
 let KEY_POINT = "point"
 let KEY_X     = "x"
@@ -26,7 +20,7 @@ let KEY_COLOR = "color"
 class PointModel: NSObject, NSCoding {
     var point : CGPoint = CGPointZero
     var scale : CGFloat = 1
-    var color : PaintColor = PaintColor.Blue
+    var color : UIColor? = nil
     
     override init() {
         super.init()
@@ -36,8 +30,7 @@ class PointModel: NSObject, NSCoding {
         aCoder.encodeObject(self.point.x, forKey: KEY_X)
         aCoder.encodeObject(self.point.y, forKey: KEY_Y)
         aCoder.encodeObject(self.scale, forKey: KEY_SCALE)
-        aCoder.encodeInt(self.color.rawValue, forKey: KEY_COLOR)
-        
+        aCoder.encodeObject(self.color, forKey: KEY_COLOR)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -45,8 +38,7 @@ class PointModel: NSObject, NSCoding {
         let y = aDecoder.decodeObjectForKey(KEY_Y) as! CGFloat
         self.point = CGPointMake(x, y)
         self.scale = aDecoder.decodeObjectForKey(KEY_SCALE) as! CGFloat
-        let color = aDecoder.decodeInt32ForKey(KEY_COLOR)
-        self.color = PaintColor(rawValue: color)!
+        self.color = (aDecoder.decodeObjectForKey(KEY_COLOR) as! UIColor)
     }
     
 }

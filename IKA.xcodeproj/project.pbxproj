@@ -20,7 +20,7 @@
 		1EE4CD5A1BEF4AA600D08900 /* MarkViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD581BEF4AA600D08900 /* MarkViewColor.swift */; };
 		1EE4CD5B1BEF4AA600D08900 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD591BEF4AA600D08900 /* Timer.swift */; };
 		1EE4CD601BEF4B0200D08900 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD5C1BEF4B0200D08900 /* Message.swift */; };
-		1EE4CD631BEF4B0200D08900 /* Puddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD5F1BEF4B0200D08900 /* Puddle.swift */; };
+		1EE4CD631BEF4B0200D08900 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD5F1BEF4B0200D08900 /* Paddle.swift */; };
 		1EE4CD691BEF4D9F00D08900 /* UIImage+PixcelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD671BEF4D9F00D08900 /* UIImage+PixcelColor.swift */; };
 		1EE4CD6A1BEF4D9F00D08900 /* UIView+ConvertToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD681BEF4D9F00D08900 /* UIView+ConvertToImage.swift */; };
 		1EE4CD6C1BEF555100D08900 /* PuddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4CD6B1BEF555100D08900 /* PuddleView.swift */; };
@@ -63,7 +63,7 @@
 		1EE4CD581BEF4AA600D08900 /* MarkViewColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkViewColor.swift; sourceTree = "<group>"; };
 		1EE4CD591BEF4AA600D08900 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		1EE4CD5C1BEF4B0200D08900 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		1EE4CD5F1BEF4B0200D08900 /* Puddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puddle.swift; sourceTree = "<group>"; };
+		1EE4CD5F1BEF4B0200D08900 /* Paddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
 		1EE4CD671BEF4D9F00D08900 /* UIImage+PixcelColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+PixcelColor.swift"; sourceTree = "<group>"; };
 		1EE4CD681BEF4D9F00D08900 /* UIView+ConvertToImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConvertToImage.swift"; sourceTree = "<group>"; };
 		1EE4CD6B1BEF555100D08900 /* PuddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuddleView.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE4CD5C1BEF4B0200D08900 /* Message.swift */,
-				1EE4CD5F1BEF4B0200D08900 /* Puddle.swift */,
+				1EE4CD5F1BEF4B0200D08900 /* Paddle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE4CD631BEF4B0200D08900 /* Puddle.swift in Sources */,
+				1EE4CD631BEF4B0200D08900 /* Paddle.swift in Sources */,
 				1EE4CCFF1BEF352500D08900 /* MenuVC.swift in Sources */,
 				1EE4CD551BEF4A3500D08900 /* GameConditionManager.swift in Sources */,
 				1EE4CD5B1BEF4AA600D08900 /* Timer.swift in Sources */,

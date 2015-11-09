@@ -7,18 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
 enum Condition {
     case NotStarted                // ユーザが Start ボタン未押下
     case WaitForOpponentToTapStart // 対戦相手の Start ボタン押下待ち
 }
 
-class GameConditionManager : NSObject {
+public class GameConditionManager : NSObject {
 
     static let sharedInstance = GameConditionManager()
-
-
     var condition = Condition.NotStarted
+    var color : UIColor? = nil
+
+    
+    // Temporary Identifier
+    public let uuid = NSUUID().UUIDString
+    public var opponentUuid : String {
+        get {
+            return self.opponentUuid
+        }
+        set(newOpponentUuid) {
+            self.color = (newOpponentUuid < self.uuid) ? UIColor.orangeColor() : UIColor.blueColor()
+            self.opponentUuid = newOpponentUuid
+        }
+    }
 
     func initialize() {
     }
