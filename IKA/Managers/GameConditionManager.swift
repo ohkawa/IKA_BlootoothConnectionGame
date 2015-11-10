@@ -23,13 +23,10 @@ public class GameConditionManager : NSObject {
     
     // Temporary Identifier
     public let uuid = NSUUID().UUIDString
-    public var opponentUuid : String {
-        get {
-            return self.opponentUuid
-        }
-        set(newOpponentUuid) {
-            self.color = (newOpponentUuid < self.uuid) ? UIColor.orangeColor() : UIColor.blueColor()
-            self.opponentUuid = newOpponentUuid
+    
+    public var opponentUuid : String? {
+        didSet {
+            self.color = (self.opponentUuid < self.uuid) ? UIColor.orangeColor() : UIColor.blueColor()
         }
     }
 
