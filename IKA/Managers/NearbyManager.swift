@@ -25,6 +25,7 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     // --------------------------------------------------------------------- //
     // MARK: - Life Cycle
     func initialize() {
+        print(__FUNCTION__)
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
         self.session = MCSession(peer: peerID)
         self.session.delegate = self
@@ -39,6 +40,7 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     }
     
     deinit {
+        print(__FUNCTION__)
         self.browser.stopBrowsingForPeers()
         self.assistant.stopAdvertisingPeer()
         self.session.disconnect()
@@ -47,6 +49,7 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     // --------------------------------------------------------------------- //
     // MARK: -
     func sendMessage(point : PointModel) {
+        print(__FUNCTION__)
         do {
             let data = NSKeyedArchiver.archivedDataWithRootObject(point)
             try self.session.sendData(data,
@@ -61,11 +64,13 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     // --------------------------------------------------------------------- //
     // MARK: - MCNearbyServiceBrowserDelegate
     func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+        print(__FUNCTION__)
         let data = NSKeyedArchiver.archivedDataWithRootObject(GameConditionManager.sharedInstance.uuid)
         self.browser.invitePeer(peerID, toSession: session, withContext: data, timeout: 10)
     }
     
     func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        print(__FUNCTION__)
         print(peerID)
     }
     
@@ -73,12 +78,12 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     // MARK: - MCNearbyServiceAdvertiserDelegate
     func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void)
     {
+        print(__FUNCTION__)
         print(peerID)
-        print(context?.description)
-        print(invitationHandler)
         invitationHandler(true, self.session);
         
         let opponentUuid = NSKeyedUnarchiver.unarchiveObjectWithData(context!) as! String
+        print(opponentUuid.debugDescription)
         GameConditionManager.sharedInstance.opponentUuid = opponentUuid
     }
     
@@ -87,11 +92,12 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     
     func session(session: MCSession, didReceiveData data: NSData,
         fromPeer peerID: MCPeerID)  {
+            print(__FUNCTION__)
             // Called when a peer sends an NSData to us
             // This needs to run on the main queue
             dispatch_async(dispatch_get_main_queue()) {
                 let point = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! PointModel
-                print(point.point.x, point.point.y)
+                print(point.point)
                 self.canvasVC?.paintEnemyPuddle(point)
             }
     }
@@ -101,8 +107,8 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
     func session(session: MCSession,
         didStartReceivingResourceWithName resourceName: String,
         fromPeer peerID: MCPeerID, withProgress progress: NSProgress)  {
-            
             // Called when a peer starts sending a file to us
+            print(__FUNCTION__)
     }
     
     func session(session: MCSession,
@@ -110,17 +116,19 @@ class NearbyManager : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDele
         fromPeer peerID: MCPeerID,
         atURL localURL: NSURL, withError error: NSError?)  {
             // Called when a file has finished transferring from another peer
+            print(__FUNCTION__)
     }
     
     func session(session: MCSession, didReceiveStream stream: NSInputStream,
         withName streamName: String, fromPeer peerID: MCPeerID)  {
             // Called when a peer establishes a stream with us
+            print(__FUNCTION__)
     }
     
     func session(session: MCSession, peer peerID: MCPeerID,
         didChangeState state: MCSessionState)  {
             // Called when a connected peer changes state (for example, goes offline)
-            
+            print(__FUNCTION__)
     }
 }
 

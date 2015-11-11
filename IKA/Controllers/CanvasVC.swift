@@ -16,8 +16,7 @@ class CanvasVC: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        timer.start()
+//        timer.start()
         
         NearbyManager.sharedInstance.canvasVC = self
 
@@ -40,9 +39,9 @@ class CanvasVC: UIViewController {
         }
         let point = PointModel()
         point.point = touches.first!.locationInView(self.view)
+        print(point.point)
         point.scale = scale
         point.color = GameConditionManager.sharedInstance.color
-
         
         NearbyManager.sharedInstance.sendMessage(point)
         
@@ -57,7 +56,6 @@ class CanvasVC: UIViewController {
     
     func paintEnemyPuddle(point: PointModel) {
         let puddle = PuddleView(point: point)
-        puddle.backgroundColor = UIColor.blueColor()
         self.view.addSubview(puddle)
         puddle.spread()
     }

@@ -17,8 +17,6 @@ public func mark(view: UIView) {
         for (var x = margin; x < image!.size.width; x += margin) {
             _ = image?.getColor(CGPointMake(x, y))
 
-            // for debug.
-            // Show check points.
 #if DEBUG
             let dot = UIView(frame: CGRectMake(0, 0, 2, 2))
             dot.center = CGPointMake(x, y)
